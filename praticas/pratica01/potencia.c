@@ -24,6 +24,9 @@ int main() {
    potencia = calcular_potencia(0,5);
    printf("base = 0 , expoente = 5, potencia = %1.0f\n", potencia);
 
+   potencia = calcular_potencia(0,0);
+   printf("base = 0 , expoente = 0, potencia = %1.0f\n", potencia);
+
 
 
     return 0;
