@@ -14,7 +14,7 @@ int buscaseque(int vetor[], int tamanho, int valor){
 
 int main(){
     int vetor[100];
-    int valor, encontrado;
+    int valor, posicao;
 
     srand(time(NULL));
 
@@ -24,16 +24,30 @@ int main(){
         printf("%d\n ", vetor[i]);
     }
 
-    printf("escreva um valor que voce queira: ");
-    scanf("%d", &valor);
+    valor = vetor[0];
 
-    encontrado = buscaseque(vetor, 100, valor);
+    clock_t inicio1 = clock();
+    posicao = buscaseque(vetor, 100, valor);
+    clock_t fim1 = clock();
 
-    if(encontrado != -1){
-        printf("o valor encontrado esta na posicao  %d\n", encontrado);
-    } else{
-        printf("Nao encontrado que pena");
-    }
+    double tempo1 = (double)(fim1 - inicio1)/CLOCKS_PER_SEC;
+
+    printf("\nValor: %d", valor);
+    printf("\nPosicao encontrada: %d", posicao);
+    printf("\nTempo: %.6f segundos\n", tempo1);
+
+    valor = vetor[99];
+
+    clock_t inicio2 = clock();
+    posicao = buscaseque(vetor, 100, valor);
+    clock_t fim2 = clock();
+
+    double tempo2 = (double)(fim2 - inicio2)/CLOCKS_PER_SEC;
+
+     printf("\nValor: %d", valor);
+    printf("\nPosicao encontrada: %d", posicao);
+    printf("\nTempo: %.6f segundos\n", tempo2);
+
     
 
 
