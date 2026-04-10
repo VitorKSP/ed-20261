@@ -37,7 +37,7 @@
         }
      }
 
-int main()[
+int main(){
     int saque;
 
     printf("digite o valor do saque (maximo 1000): ");
@@ -52,4 +52,4 @@ int main()[
 
 
     return 0;
-]
+}
