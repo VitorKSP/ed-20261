@@ -27,3 +27,14 @@ void imprimir vetor(int v[], int n){
     }
     printf("%i]\n", v[n - 1]);
 }
+
+void particionar_vetor(int v[], int inicio, int fim){
+    int pivo = v[fim];
+    int i = inicio - 1
+    for(int j = inicio; j<fim; j++ ){
+        if(v[j] <= pivo){
+            i++;
+            troca(&v[i] &v[j]);
+        }
+    }
+}
