@@ -1,55 +1,69 @@
 #include <stdio.h>
-     void calcular_notas(int valor){
-        int notas200, notas100, notas50, notas20, notas10, notas5, notas2;
+#include <stdlib.h>
 
-        notas200= valor /200;
-        valor %= 200;
+int* quantNotas(int saque){
+    int notas[] = {200, 100, 50, 20, 10, 5, 2};
+    int *qtd = malloc(7 * sizeof(int));
 
-        notas200= valor /100;
-        valor %= 100;
-
-        notas200= valor /50;
-        valor %= 50;
-
-        notas200= valor /20;
-        valor %= 20;
-
-        notas200= valor /10;
-        valor %= 10;
-
-        notas200= valor /5;
-        valor %= 5;
-
-        notas200= valor /2;
-        valor %= 2;
-
-        printf("\nQuantidade de notas:\n");
-        printf("200: %d\n", notas200);
-        printf("100: %d\n", notas100);
-        printf("50: %d\n", notas50);
-        printf("20: %d\n", notas20);
-        printf("10: %d\n", notas10);
-        printf("5: %d\n", notas5);
-        printf("2: %d\n", notas2);
-
-        if(valor !=0){
-            printf("Valor que não pode ser sacado: %d", valor);
+    if(saque > 1000){
+        for(int i = 0; i < 7; i++){
+            qtd[i] = 0;
         }
-     }
-
-int main(){
-    int saque;
-
-    printf("digite o valor do saque (maximo 1000): ");
-    scanf("%d", &saque);
-
-    if(saque <= 0 || saque > 1000){
-        printf("Valor invalido\n");
-    }else{
-        calcular_notas(saque);
+        return qtd;
+    }
+    for(int i = 0; i < 7; i++){
+        qtd[i] = saque / notas[i];
+        saque %= notas[i];
     }
 
+    return qtd;
+}
 
+int Cedulas(int qtd[], int esperado[]){
+    for(int i = 0; i < 7; i++){
+        if(qtd[i] != esperado[i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void imprimeCedulas(int qtd[], int notas[]){
+    for(int i = 0; i < 7; i++){
+        if(qtd[i] > 0){
+            printf("%d cedulas de %d\n", qtd[i], notas[i]);
+        }
+    }
+}
+
+int main(){
+    int notas[] = {200, 100, 50, 20, 10, 5, 2};
+    int *qtd = quantNotas(0);
+
+    int resultado1[] = {2, 0, 1, 0, 0, 0, 0};
+    qtd = quantNotas(450);
+
+    printf("Saque = 450, Quant. cedulas:\n");
+    imprimeCedulas(qtd, notas);
+    printf("=> %i\n\n", Cedulas(qtd, resultado1));
+    free(qtd);
+
+    int resultado2[] = {4, 0, 1, 1, 0, 1, 0};
+    qtd = quantNotas(875);
+
+    printf("Saque = 875, Quant. cedulas:\n");
+    imprimeCedulas(qtd, notas);
+    printf("0");
+    printf(" => %i\n\n", Cedulas(qtd, resultado2));
+    free(qtd);  
+
+    int resultado3[] = {5, 0, 0, 0, 0, 0, 0};
+    qtd = quantNotas(1000);
+
+    printf("Saque = 1125, Quant. cedulas:\n");
+    imprimeCedulas(qtd, notas);
+    printf("=> %i\n\n", Cedulas(qtd, resultado3));
+    free(qtd);
 
     return 0;
 }

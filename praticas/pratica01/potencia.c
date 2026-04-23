@@ -16,16 +16,16 @@ int main() {
     double potencia;
 
     potencia = calcular_potencia(2,5);
-   printf("base = 2 , expoente = 5, potencia = %1.0f\n", potencia);
+   printf("base = 2 , expoente = 5, potencia = %1.0f --> %i\n", potencia, potencia==32);
 
    potencia = calcular_potencia(2,0);
-   printf("base = 2 , expoente = 0, potencia = %1.0f\n", potencia);
+   printf("base = 2 , expoente = 0, potencia = %1.0f --> %i\n", potencia, potencia==1);
 
    potencia = calcular_potencia(0,5);
-   printf("base = 0 , expoente = 5, potencia = %1.0f\n", potencia);
+   printf("base = 0 , expoente = 5, potencia = %1.0f --> %i\n", potencia, potencia==0);
 
    potencia = calcular_potencia(0,0);
-   printf("base = 0 , expoente = 0, potencia = %1.0f\n", potencia);
+   printf("base = 0 , expoente = 0, potencia = %1.0f --> %i\n", potencia, potencia==-1);
 
 
 
