@@ -1,24 +1,24 @@
+
+
 #ifndef LISTA_ENCADEADA_H
 #define LISTA_ENCADEADA_H
 
-typedef  struct{
+typedef struct No {
     int dado;
-    No *proximo;
-}No;
+    struct No *proximo;
+} No;
 
-typedef  struct {
+typedef struct {
     No *primeiro;
     No *ultimo;
     int quantidade;
-
-}ListaEncadead;
+} ListaEncadeada;
 
 ListaEncadeada *criar();
 void destruir(ListaEncadeada *lista);
 void adicionar_final(ListaEncadeada *lista, int valor);
 int lista_vazia(ListaEncadeada *lista);
-No *buscar(ListaEncadeada *lisya, int valor);
+No *buscar(ListaEncadeada *lista, int valor);
 void remover(ListaEncadeada *lista, int valor);
-
 
 #endif
