@@ -1,7 +1,9 @@
-
+#include <stdlib.h>
 #include "pilha.h"
 
-pilha *criar(){
+
+
+Pilha *criar(){
     Pilha *pilha = (Pilha *)malloc(sizeof(Pilha));
 
     if(pilha == NULL){
@@ -23,5 +25,20 @@ No pilha_topo(Pilha *pilha){
 
 
 void empilhar(Pilha *pilha, int valor){
+    No *no = (No *)malloc(sizeof(No));
+    no->dados = valor;
+    no->proximo = pilha->topo;
+    pilha->topo= no;
+    pilha->quantidade++;
+}
 
+void desempilhar(Pilha *pilha){
+    No *no = pilha->topo;
+    pilha->topo = no->proximo;
+    pilha->quantidade--;
+    free(no);
+}
+
+void destruir(Pilha *pilha){
+    free(pilha);
 }
